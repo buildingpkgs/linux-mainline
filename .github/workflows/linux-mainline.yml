@@ -11,8 +11,8 @@ jobs:
         run: |
           pacman -Syu --noconfirm base-devel git
           useradd user -mG wheel && echo "user ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
-          chown user -R .
           git clone https://aur.archlinux.org/linux-mainline.git
+          chown user -R .
           cd linux-mainline
           su user -c "yes|PKGDEST=/tmp/linux-mainline makepkg --noconfirm -s"
       - name: Archive the artifacts
